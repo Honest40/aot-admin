@@ -80,6 +80,7 @@ img{max-width:60px;border-radius:4px;cursor:pointer}
 <th>Face</th>
 <th>Purpose</th>
 <th>Location</th>
+<th>Signature</th>
 <th>Actions</th>
 </tr>
 </thead>
@@ -120,7 +121,6 @@ const totalLoansEl = document.getElementById("totalLoans");
 const pendingLoansEl = document.getElementById("pendingLoans");
 const approvedLoansEl = document.getElementById("approvedLoans");
 const rejectedLoansEl = document.getElementById("rejectedLoans");
-const alertSound = document.getElementById("alertSound");
 
 let allLoans = [];
 
@@ -150,6 +150,13 @@ function renderLoans(loans){
       <td><img src="${l.facePhoto}" onclick="showModal('${l.facePhoto}')"></td>
       <td>${l.purpose}</td>
       <td>${l.location}</td>
+
+      <td>
+        ${l.signature 
+          ? `<img src="${l.signature}" onclick="showModal('${l.signature}')" title="Applicant Signature">`
+          : '<small>No signature</small>'}
+      </td>
+
       <td>
         ${l.loanStatus==="Pending" ? `
         <button onclick="updateStatus('${l.id}','Approved')">✔</button>
